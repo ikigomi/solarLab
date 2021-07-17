@@ -1,0 +1,55 @@
+<div class="row create">
+  <form [formGroup]="creationForm" (ngSubmit)="person ? update() : create()">
+    <div class="mb-3">
+      <label for="name">Имя</label>
+      <input type="text" class="form-control" formControlName="firstName">
+    </div>
+    <div class="alert alert-danger" *ngIf="firstName?.touched && firstName!.errors?.required">
+      Введите имя
+    </div>
+    <div class="mb-3">
+      <label>Фамилия</label>
+      <input type="text" class="form-control" formControlName="lastName">
+    </div>
+    <div class="alert alert-danger" *ngIf="lastName?.touched && lastName!.errors?.required">
+      Введите фамилию
+    </div>
+    <div class="mb-3">
+      <label>Email</label>
+      <input type="text" min="0" class="form-control" formControlName="email">
+    </div>
+    <div class="alert alert-danger" *ngIf="email?.touched && email!.errors?.required">
+      Введите email
+    </div>
+    <div class="alert alert-danger" *ngIf="email?.touched && email!.errors?.email">
+      Неверный формат email
+    </div>
+    <div class="mb-3">
+      <label for="birthday">Дата рождения</label>
+      <input type="date" class="form-control" formControlName="birthday">
+    </div>
+    <div class="alert alert-danger" *ngIf="birthday?.touched && birthday!.errors?.required">
+      Введите дату рождения
+    </div>
+    <div *ngIf="!person; else image" class="mb-3">
+      <label>Картинка</label>
+      <input type="file" class="form-control" #file placeholder="Выберите файл" (change)="setFile=file.files">
+    </div>
+    <ng-template #image>
+      <div class="mb-3">
+        <img [src]="person!.imageUrl" class="form-image">
+      </div>
+    </ng-template>
+    <div class="alert alert-danger" *ngIf="imgUrl?.touched && imgUrl!.errors?.required">
+      Выберите картинку
+    </div>
+      <div class="addBtn">
+        <button type="submit" class="btn btn-success" [disabled]="!creationForm.valid">{{person ? 'Сохранить' : 'Добавить'}}</button>
+      </div>
+      <div class="backBtn">
+        <button routerLink="/list" class="btn btn-success">Назад</button>
+      </div>
+  </form>
+</div>
+
+

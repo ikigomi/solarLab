@@ -1,0 +1,25 @@
+<div *ngIf="persons && persons!.length > 0; else emptyData">
+  <table class="table table align-middle text-center">
+    <thead>
+      <tr>
+        <th scope="col">Фото</th>
+        <th scope="col">Имя</th>
+        <th scope="col">Фамилия</th>
+        <th scope="col">Email</th>
+        <th scope="col">Дата рождения</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let person of persons">
+        <td><img [src]="person.imageUrl" alt="" class="table-image"></td>
+        <td>{{person.firstName}}</td>
+        <td>{{person.lastName}}</td>
+        <td>{{person.email}}</td>
+        <td>{{person.birthday | date:'MMMM d, y'}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #emptyData>
+  <h4>Нет данных</h4>
+</ng-template>

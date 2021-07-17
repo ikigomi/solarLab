@@ -1,0 +1,21 @@
+<div class=" birthdays row align-items-start text-center">
+  <div class="col">
+    <h5>Сегодняшние дни рождения</h5>
+    <app-table [persons]="current"></app-table>
+  </div>
+  <div class="col">
+    <h5>Дни рождения на ближайшие {{days}} дней</h5>
+    <app-table [persons]="upcoming"></app-table>
+    <div class="addDays">
+      <div>Показать на
+        <input #inputDays [value]="days" min="0" class="m-2" type="number">
+        дней
+      </div>
+      <button class="btn btn-outline-success" (click)="updateUpcoming(inputDays.value)">Показать</button>
+    </div>
+  </div>
+</div>
+<div>
+  <h3><a class="text-success" routerLink="/list">Просмотр и редактирование полного списка дней рождений</a></h3>
+  <h3><a class="text-success" routerLink="/address">Просмотр и редактирование списка адресов для рассылки</a></h3>
+</div>

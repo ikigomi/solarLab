@@ -1,0 +1,29 @@
+<form [formGroup]="addForm" class="addAddress" (ngSubmit)="create()">
+  <input class="m-2" type="email" placeholder="Введите email" formControlName="email"/>
+  <input class="m-2" type="number" placeholder="за дней до ДР" formControlName="days" min="0"/>
+  <button [disabled]="addForm.invalid" class="btn btn-success">Добавить</button>
+</form>
+
+<div *ngIf="addresses && addresses!.length > 0; else emptyData">
+  <table class="table align-middle text-center">
+    <thead>
+      <tr>
+        <th scope="col">Email</th>
+        <th scope="col">Минимальное количество дней до дня рождения</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let address of addresses">
+        <td>{{address.email}}</td>
+        <td><input #updateDays class="m-2" type="number" min="0" [value]="address.days"/></td>
+        <td><button class="btn btn-success" (click)="update(address, updateDays.value)">Сохранить</button></td>
+        <td><i class="fas fa-trash-alt fa-lg text-danger" title="Удалить" (click)="onDelete(address.id)"></i></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #emptyData>
+  <h4>Нет данных</h4>
+</ng-template>

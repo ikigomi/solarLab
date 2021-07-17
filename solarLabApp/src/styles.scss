@@ -1,0 +1,50 @@
+footer {
+  margin-top: 50px;
+}
+.addDays {
+ 
+  div {
+    display: inline-block;
+  }
+  input {
+  width: 15%;
+  }
+
+  button {
+    width: 25%;
+    margin-left: 40px;
+  }
+}
+
+.table {
+  i {
+    cursor: pointer;
+  }
+}
+
+.addBtn {
+  display: inline-block;
+  right: 10px;
+  width: 20%;
+  button {
+    width: 100%;
+  }
+}
+
+.backBtn {
+  display: block;
+  width: 20%;
+  float: right;
+  button {
+    width: 100%;
+  }
+}
+
+.table-image {
+  height: 100px;
+  width: 100px;
+}
+
+.form-image {
+  max-width: 300px;
+}
